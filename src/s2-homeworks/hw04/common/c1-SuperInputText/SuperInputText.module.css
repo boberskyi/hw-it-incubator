@@ -2,6 +2,12 @@
 }
 
 .input {
+    box-sizing: border-box;
+    padding: 2px 15px;
+    border-radius: 5px;
+    border: 1px solid #D1D1D1;
+    width: 372px;
+    height: 36px;
 }
 
 .inputWrapper {
@@ -17,4 +23,5 @@
 }
 
 .error {
+    color: red;
 }
