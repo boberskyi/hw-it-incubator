@@ -17,7 +17,6 @@ function Clock() {
 
     const stop = () => {
         setTimerStatus('stop');
-        saveState('hw9-date', Date.now());
 
         if (timerId) {
             clearInterval(timerId);
