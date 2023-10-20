@@ -30,8 +30,8 @@ function Clock() {
 
     const formatDate = (date:number) => date.toString().padStart(2, '0');
 
-    const stringTime = `${formatDate(date.getHours())} : ${formatDate(date.getMinutes())} : ${formatDate(date.getSeconds())}` || <br/>;
-    const stringDate = `${formatDate(date.getDate())} : ${formatDate(date.getMonth() + 1)} : ${formatDate(date.getFullYear())}`|| <br/>;
+    const stringTime = `${formatDate(date.getHours())}:${formatDate(date.getMinutes())}:${formatDate(date.getSeconds())}` || <br/>;
+    const stringDate = `${formatDate(date.getDate())}.${formatDate(date.getMonth() + 1)}.${formatDate(date.getFullYear())}`|| <br/>;
 
     let dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
