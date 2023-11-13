@@ -1,15 +1,15 @@
 import React from 'react'
-import {BrowserRouter} from 'react-router-dom'
+import {HashRouter} from 'react-router-dom'
 import { Layout } from './layout/Layout'
 import Pages from './Pages'
 
 function HW5() {
     return (
-        <BrowserRouter>
+        <HashRouter>
             <Layout>
                 <Pages />
             </Layout>
-        </BrowserRouter>
+        </HashRouter>
     )
 }
 

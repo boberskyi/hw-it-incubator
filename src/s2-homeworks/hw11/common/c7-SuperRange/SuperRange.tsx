@@ -1,5 +1,5 @@
 import React from 'react'
-import {Slider, SliderProps, SliderThumb} from '@mui/material'
+import {Slider, SliderProps} from '@mui/material'
 import { styled } from '@mui/material/styles';
 
 const SuperRange: React.FC<SliderProps> = (props) => {
