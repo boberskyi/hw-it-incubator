@@ -19,6 +19,9 @@ const HW13 = () => {
     const [text, setText] = useState('')
     const [info, setInfo] = useState('')
     const [image, setImage] = useState('')
+    const [isActive, setIsActive] = useState(false);
+
+
 
     const send = (x?: boolean | null) => () => {
         const url =
@@ -30,18 +33,33 @@ const HW13 = () => {
         setImage('')
         setText('')
         setInfo('...loading')
+        setIsActive(true)
 
         axios
             .post(url, {success: x})
             .then((res) => {
-                setCode('Код 200!')
+                console.log(res);
+                setCode(`Код ${res.status}!`)
                 setImage(success200)
-                // дописать
+                setText(res.data.errorText)
+                setInfo(res.data.info)
 
+                setIsActive(false)
             })
             .catch((e) => {
-                // дописать
+                setIsActive(false)
 
+                if(e.response.status === 0) {
+                    setCode('Error!')
+                    setImage(errorUnknown)
+                    setText(e.message)
+                    setInfo(e.name)
+                } else {
+                    setCode(`Ошибка ${e.response.status}!`)
+                    setImage(e.response.status === 400 ? error400 : error500)
+                    setText(e.response.data.errorText)
+                    setInfo(e.response.data.info)
+                }
             })
     }
 
@@ -55,8 +73,7 @@ const HW13 = () => {
                         id={'hw13-send-true'}
                         onClick={send(true)}
                         xType={'secondary'}
-                        // дописать
-
+                        disabled={isActive}
                     >
                         Send true
                     </SuperButton>
@@ -64,8 +81,7 @@ const HW13 = () => {
                         id={'hw13-send-false'}
                         onClick={send(false)}
                         xType={'secondary'}
-                        // дописать
-
+                        disabled={isActive}
                     >
                         Send false
                     </SuperButton>
@@ -73,8 +89,7 @@ const HW13 = () => {
                         id={'hw13-send-undefined'}
                         onClick={send(undefined)}
                         xType={'secondary'}
-                        // дописать
-
+                        disabled={isActive}
                     >
                         Send undefined
                     </SuperButton>
@@ -82,8 +97,7 @@ const HW13 = () => {
                         id={'hw13-send-null'}
                         onClick={send(null)} // имитация запроса на не корректный адрес
                         xType={'secondary'}
-                        // дописать
-
+                        disabled={isActive}
                     >
                         Send null
                     </SuperButton>
